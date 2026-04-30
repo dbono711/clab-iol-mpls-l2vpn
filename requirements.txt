@@ -1,0 +1,5 @@
+ansible==9.5.1
+ansible-pylibssh==1.2.2
+setuptools>=70,<76
+pyats[library]==25.11
+pytest==8.3.3

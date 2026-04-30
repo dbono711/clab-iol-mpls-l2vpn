@@ -1,0 +1,54 @@
+name: iol-mpls-l2vpn
+
+mgmt:
+  network: br-iol-l2vpn
+  ipv4-subnet: 10.0.0.0/24
+
+topology:
+  kinds:
+    cisco_iol:
+      image: vrnetlab/cisco_iol:17.12.01
+    linux:
+      image: wbitt/network-multitool:alpine-extra
+  nodes:
+
+    # Provider Edge (PE) nodes
+    west1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.0.0.2
+      ports:
+        - 10022:22
+    east1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.0.0.4
+      ports:
+        - 10222:22
+
+    # Provider (P) nodes
+    core1:
+      kind: cisco_iol
+      mgmt-ipv4: 10.0.0.3
+      ports:
+        - 10122:22
+
+    # Client nodes
+    client1:
+      kind: linux
+      mgmt-ipv4: 10.0.0.5
+      binds:
+        - clients/client1.sh:/tmp/client1.sh
+      exec:
+        - bash /tmp/client1.sh
+    client2:
+      kind: linux
+      mgmt-ipv4: 10.0.0.6
+      binds:
+        - clients/client2.sh:/tmp/client2.sh
+      exec:
+        - bash /tmp/client2.sh
+
+  links:
+    - endpoints: ["west1:Ethernet0/1","core1:Ethernet0/1"]
+    - endpoints: ["east1:Ethernet0/1","core1:Ethernet0/2"]
+    - endpoints: ["west1:Ethernet0/2","client1:eth1"]
+    - endpoints: ["east1:Ethernet0/2","client2:eth1"]

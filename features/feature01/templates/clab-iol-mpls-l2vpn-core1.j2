@@ -1,0 +1,37 @@
+hostname core1
+!
+mpls label protocol ldp
+!
+interface Loopback0
+ ip address 10.10.10.2 255.255.255.255
+!
+interface Ethernet0/1
+ description connected_to_west1
+ ip address 10.1.0.1 255.255.255.254
+ ip router isis 1
+ no shutdown
+ mpls ip
+ isis network point-to-point
+!
+interface Ethernet0/2
+ description connected_to_east1
+ ip address 10.1.0.3 255.255.255.254
+ ip router isis 1
+ no shutdown
+ mpls ip
+ isis network point-to-point
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+router isis 1
+ net 49.0001.1010.1000.0002.00
+ is-type level-2-only
+ router-id Loopback0
+ metric-style wide
+ no hello padding point-to-point
+ log-adjacency-changes
+ passive-interface Loopback0
+!
+end
