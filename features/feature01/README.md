@@ -4,11 +4,11 @@
 
 Feature 01 implements a basic point-to-point Ethernet service over MPLS using Cisco's L2VPN protocol-based CLI in **port mode**.
 
-In service terms, this feature introduces:
+As a practical starting point for **E-Line** style service delivery across an MPLS core, this feature introduces:
 
 - **EoMPLS** as the Cisco Ethernet transport mechanism
 - **VPWS** as the standards-aligned point-to-point Layer 2 VPN model
-- a practical starting point for **E-Line** style service delivery across the MPLS core
+- As we are in port mode, this feature supports tagged OR untagged frames from the clients
 
 For the overall repository model and feature map, see the [repository README](../../README.md).
 
@@ -140,7 +140,7 @@ These open an SSH session to the network devices or a shell inside the client co
 
 After applying this feature:
 
-- the PE nodes receive the feature-specific EoMPLS / VPWS service configuration
+- the PE nodes receive the feature-specific service configuration
 - the resulting configuration reflects a port-mode service setup aligned to the Cisco reference
 - `make validate` succeeds (i.e., the parsed `show l2vpn service name RED` output reports the `RED` service as up on the PE devices)
 - `client1` can reach `172.16.1.2` on `client2`
