@@ -1,0 +1,36 @@
+testbed:
+  name: feature02
+  credentials:
+    default:
+      username: admin
+      password: admin
+    enable:
+      password: admin
+
+devices:
+  west1:
+    alias: west1
+    os: ios
+    platform: iol
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.0.0.2
+
+  core1:
+    alias: core1
+    os: ios
+    platform: iol
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.0.0.3
+
+  east1:
+    alias: east1
+    os: ios
+    platform: iol
+    connections:
+      cli:
+        protocol: ssh
+        ip: 10.0.0.4
