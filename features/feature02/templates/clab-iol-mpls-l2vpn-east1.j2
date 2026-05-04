@@ -1,0 +1,62 @@
+hostname east1
+!
+mpls label protocol ldp
+!
+interface Loopback0
+ ip address 10.10.10.3 255.255.255.255
+!
+interface pseudowire10
+ encapsulation mpls
+ neighbor 10.10.10.1 10
+!
+interface Ethernet0/1
+ description connected_to_core1
+ ip address 10.1.0.2 255.255.255.254
+ ip router isis 1
+ no shutdown
+ mpls ip
+ isis network point-to-point
+!
+interface Ethernet0/2
+ description connected_to_client2
+ no ip address
+ no shutdown
+!
+interface Ethernet0/2.1
+ description connected_to_client2_vlan10
+ no ip address
+ no shutdown
+ encapsulation dot1q 10
+!
+router isis 1
+ net 49.0001.1010.1000.0003.00
+ is-type level-2-only
+ router-id Loopback0
+ metric-style wide
+ no hello padding point-to-point
+ log-adjacency-changes
+ passive-interface Loopback0
+!
+router bgp 64512
+ bgp router-id 10.10.10.3
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ neighbor 10.10.10.1 remote-as 64512
+ neighbor 10.10.10.1 description west1
+ neighbor 10.10.10.1 update-source Loopback0
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor 10.10.10.1 activate
+  neighbor 10.10.10.1 send-community both
+ exit-address-family
+!
+ip bgp-community new-format
+!
+l2vpn xconnect context RED
+ member pseudowire10
+ member Ethernet0/2.1
+!
+end

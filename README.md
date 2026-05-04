@@ -118,7 +118,8 @@ Reference: [Ethernet over MPLS](https://www.cisco.com/c/en/us/td/docs/routers/io
 
 | Feature | Summary | Cisco Reference | Feature Guide |
 | ------- | ------- | --------------- | ------------- |
-| [Feature 01](features/feature01/README.md) | EoMPLS / VPWS port-mode implementation using protocol-based L2VPN CLI with pyATS/Genie validation | [Port mode with L2VPN protocol-based commands](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_mp-any-transport-xe.html#task_8CEDC61BD9A748E78B6659ACF7B14160) | [Feature 01 README](features/feature01/README.md) |
+| [Feature 01](features/feature01/README.md) | EoMPLS / VPWS port-mode implementation using protocol-based L2VPN CLI with pyATS validation | [Port mode with L2VPN protocol-based commands](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_mp-any-transport-xe.html#task_8CEDC61BD9A748E78B6659ACF7B14160) | [Feature 01 README](features/feature01/README.md) |
+| [Feature 02](features/feature02/README.md) | EoMPLS / VPWS VLAN-mode implementation using protocol-based L2VPN CLI with pyATS validation | [VLAN mode with L2VPN protocol-based commands](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_mp-any-transport-xe.html#task_CAB1D82D953246708848D17715B547FE) | [Feature 02 README](features/feature02/README.md) |
 
 ## Shared Automation Model
 
@@ -196,7 +197,6 @@ In essence, MEF defines the service from the customer perspective, while Cisco I
 
 - [MPLS Any Transport over MPLS on IOS-XE](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_mp-any-transport-xe.html)
 - [L2VPN Protocol-Based CLI feature](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_l2vpn-prot-based.html)
-- [Configuring Ethernet over MPLS in Port Mode Using Commands Associated with the L2VPN Protocol-Based Feature](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/mpls/b-mpls/m_mp-any-transport-xe.html#task_8CEDC61BD9A748E78B6659ACF7B14160)
 
 ## Resources
 
